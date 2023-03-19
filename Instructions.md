@@ -27,3 +27,17 @@
 -  `pip install scikit-learn`
 
 * Please Note that these steps are neccesary to run the notebook, otherwise do feel free to contact me, I will do my best to help 
+
+
+### If you want to remove the kernel do the followng steps
+
+1. Run the kernel list
+` jupyter kernelspec list `
+
+2. Find the name of the kernel you want to remove in the list
+
+3. Run the command
+
+`jupyter kernelspec uninstall <kernel_name>`
+
+* Please note this will remove the kernel from jupyterlab and it will be permanently removed 
