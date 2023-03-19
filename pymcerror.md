@@ -1,48 +1,27 @@
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-The installed Theano(-PyMC) version (1.0.5) does not match the PyMC3 requirements.
-It was imported from ['C:\\Users\\Mfund\\anaconda3\\lib\\site-packages\\theano']
-For PyMC3 to work, a compatible Theano-PyMC backend version must be installed.
-See https://github.com/pymc-devs/pymc3/wiki for installation instructions.
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-Unexpected exception formatting exception. Falling back to standard exception
-Traceback (most recent call last):
-  File "C:\Users\Mfund\anaconda3\lib\site-packages\IPython\core\interactiveshell.py", line 3460, in run_code
-    exec(code_obj, self.user_global_ns, self.user_ns)
-  File "C:\Users\Mfund\AppData\Local\Temp\ipykernel_9080\948132345.py", line 4, in <module>
-    import pymc3 as pm
-  File "C:\Users\Mfund\anaconda3\lib\site-packages\pymc3\__init__.py", line 112, in <module>
-    __set_compiler_flags()
-  File "C:\Users\Mfund\anaconda3\lib\site-packages\pymc3\__init__.py", line 83, in __set_compiler_flags
-    current = theano.config.gcc__cxxflags
+ttributeError                            Traceback (most recent call last)
+Cell In[1], line 4
+      2 import pandas as pd
+      3 import matplotlib.pyplot as plt
+----> 4 import pymc3 as pm
+      5 from sklearn.datasets import fetch_california_housing
+      6 from sklearn.linear_model import LinearRegression
+
+File ~\anaconda3\lib\site-packages\pymc3\__init__.py:112
+    108         pass
+    111 _check_backend_version()
+--> 112 __set_compiler_flags()
+    113 _hotfix_theano_printing()
+    115 from pymc3 import gp, ode, sampling
+
+File ~\anaconda3\lib\site-packages\pymc3\__init__.py:83, in __set_compiler_flags()
+     81 def __set_compiler_flags():
+     82     # Workarounds for Theano compiler problems on various platforms
+---> 83     current = theano.config.gcc__cxxflags
+     84     augmented = f"{current} -Wno-c++11-narrowing"
+     86     # Work around compiler bug in GCC < 8.4 related to structured exception
+     87     # handling registers on Windows.
+     88     # See https://gcc.gnu.org/bugzilla/show_bug.cgi?id=65782 for details.
+     89     # First disable C++ exception handling altogether since it's not needed
+     90     # for the C extensions that we generate.
+
 AttributeError: 'TheanoConfigParser' object has no attribute 'gcc__cxxflags'
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "C:\Users\Mfund\anaconda3\lib\site-packages\IPython\core\interactiveshell.py", line 2057, in showtraceback
-    stb = self.InteractiveTB.structured_traceback(
-  File "C:\Users\Mfund\anaconda3\lib\site-packages\IPython\core\ultratb.py", line 1118, in structured_traceback
-    return FormattedTB.structured_traceback(
-  File "C:\Users\Mfund\anaconda3\lib\site-packages\IPython\core\ultratb.py", line 1012, in structured_traceback
-    return VerboseTB.structured_traceback(
-  File "C:\Users\Mfund\anaconda3\lib\site-packages\IPython\core\ultratb.py", line 865, in structured_traceback
-    formatted_exception = self.format_exception_as_a_whole(etype, evalue, etb, number_of_lines_of_context,
-  File "C:\Users\Mfund\anaconda3\lib\site-packages\IPython\core\ultratb.py", line 818, in format_exception_as_a_whole
-    frames.append(self.format_record(r))
-  File "C:\Users\Mfund\anaconda3\lib\site-packages\IPython\core\ultratb.py", line 736, in format_record
-    result += ''.join(_format_traceback_lines(frame_info.lines, Colors, self.has_colors, lvals))
-  File "C:\Users\Mfund\anaconda3\lib\site-packages\stack_data\utils.py", line 145, in cached_property_wrapper
-    value = obj.__dict__[self.func.__name__] = self.func(obj)
-  File "C:\Users\Mfund\anaconda3\lib\site-packages\stack_data\core.py", line 698, in lines
-    pieces = self.included_pieces
-  File "C:\Users\Mfund\anaconda3\lib\site-packages\stack_data\utils.py", line 145, in cached_property_wrapper
-    value = obj.__dict__[self.func.__name__] = self.func(obj)
-  File "C:\Users\Mfund\anaconda3\lib\site-packages\stack_data\core.py", line 649, in included_pieces
-    pos = scope_pieces.index(self.executing_piece)
-  File "C:\Users\Mfund\anaconda3\lib\site-packages\stack_data\utils.py", line 145, in cached_property_wrapper
-    value = obj.__dict__[self.func.__name__] = self.func(obj)
-  File "C:\Users\Mfund\anaconda3\lib\site-packages\stack_data\core.py", line 628, in executing_piece
-    return only(
-  File "C:\Users\Mfund\anaconda3\lib\site-packages\executing\executing.py", line 164, in only
-    raise NotOneValueFound('Expected one value, found 0')
-executing.executing.NotOneValueFound: Expected one value, found 0
